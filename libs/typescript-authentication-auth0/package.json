@@ -1,0 +1,10 @@
+{
+  "name": "@gaf/typescript-authentication-auth0",
+  "version": "1.1.0",
+  "dependencies": {
+    "@gaf/typescript-authentication-general": "^1.1.0",
+    "@gaf/typescript-jwt": "^1.0.1",
+    "@gaf/typescript-simple-cache": "^1.0.1",
+    "auth0-js": "^9.10.1"
+  }
+}

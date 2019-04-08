@@ -14,7 +14,17 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@gaf/angular-authentication-auth0": [
+        "libs/angular-authentication-auth0/src/index.ts"
+      ],
+      "@gaf/typescript-authentication-general": [
+        "libs/typescript-authentication-general/src/index.ts"
+      ],
+      "@gaf/typescript-authentication-auth0": [
+        "libs/typescript-authentication-auth0/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

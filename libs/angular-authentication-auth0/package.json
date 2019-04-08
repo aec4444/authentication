@@ -1,0 +1,12 @@
+{
+  "name": "@gaf/angular-authentication-auth0",
+  "version": "7.1.1",
+  "peerDependencies": {
+    "@angular/common": "^7.2.0",
+    "@angular/core": "^7.2.0"
+  },
+  "dependencies": {
+    "@gaf/typescript-authentication-general": "^1.1.0",
+    "@gaf/typescript-authentication-auth0": "^1.1.0"
+  }
+}

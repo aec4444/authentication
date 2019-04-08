@@ -1,0 +1,14 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/libs/typescript-authentication-auth0",
+  "lib": {
+    "entryFile": "src/index.ts"
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib",
+    "@gaf/typescript-authentication-general",
+    "@gaf/typescript-jwt",
+    "@gaf/typescript-simple-cache",
+    "auth0-js"
+  ]
+}

@@ -1,0 +1,27 @@
+<ng-container>
+  <h4>Teams <button class="btn btn-primary btn-sm" (click)="addTeam()" *ngIf="showEditButton()">Add</button></h4>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Team</th>
+        <th>Location</th>
+        <th>Manager</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of teamData?.data">
+        <td>{{team.name}}</td>
+        <td>{{team.location}}</td>
+        <td>{{team.manager}}</td>
+        <td><button class="btn btn-primary btn-sm" (click)="editTeam(team)" *ngIf="showEditButton()">Edit</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div [hidden]="showEditButton()">
+    <gaf-team-add-edit [team]="team" (saved)="addEditDone(true)" (canceled)="addEditDone(false)">
+    </gaf-team-add-edit>
+  </div>
+</ng-container>

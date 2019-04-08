@@ -7,5 +7,21 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "angular-authentication-auth0": {
+      "tags": []
+    },
+    "typescript-authentication-general": {
+      "tags": []
+    },
+    "typescript-authentication-auth0": {
+      "tags": []
+    },
+    "angular-authentication-auth0-test": {
+      "tags": []
+    },
+    "angular-authentication-auth0-test-e2e": {
+      "tags": []
+    }
+  }
 }

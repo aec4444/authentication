@@ -1,0 +1,24 @@
+<form>
+  <!-- for the sake of this test, there is no validation/etc -->
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input name="name" id="name" class="form-control" [(ngModel)]="team.name">
+  </div>
+  <div class="form-group">
+    <label for="nickname">Nickname</label>
+    <input name="nickname" id="nickname" class="form-control" [(ngModel)]="team.nickname">
+  </div>
+  <div class="form-group">
+    <label for="manager">Manager</label>
+    <input name="manager" id="manager" class="form-control" [(ngModel)]="team.manager">
+  </div>
+  <div class="form-group">
+    <label for="location">Location</label>
+    <input name="location" id="location" class="form-control" [(ngModel)]="team.location">
+  </div>
+
+  <div class="text-center" >
+    <button class="btn btn-primary" (click)="save()">Save</button>
+    <button class="btn btn-secondary ml-2" (click)="cancel()">Cancel</button>
+  </div>
+</form>

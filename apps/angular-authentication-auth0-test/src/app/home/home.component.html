@@ -1,0 +1,48 @@
+<div class="container">
+  <div *ngIf="!authService.isAuthenticated">
+    You are not logged in.
+    <button class="btn btn-default ml-2" (click)="login()">Login</button>
+  </div>
+  <ng-container *ngIf="!useNestInterface">
+    <div *ngIf="authService.isAuthenticated">
+      You are logged in as: {{ authService.storage.info.profile.email }}
+
+      <p>
+        Querying Customer Inventory yielded {{ customerInventoryData?.count }} rows.
+      </p>
+      <!-- <p>
+        Queries Roof Projects yielded {{ roofProjectData?.count }} projects.
+      </p> -->
+
+      <h4>Page of data</h4>
+      <button class="btn btn-primary" (click)="getPage()">Get New Page</button>
+      <button class="btn btn-default ml-2" (click)="logout()">Logout</button>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>State</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customerInventoryData?.data">
+            <td>{{customer.customerName}}</td>
+            <td>{{customer.city}}</td>
+            <td>{{customer.state}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="useNestInterface">
+    <div *ngIf="authService.isAuthenticated">
+      You are logged in as: {{ authService.storage.info.profile.email }}
+      <button class="btn btn-default ml-2" (click)="logout()">Logout</button>
+
+      <gaf-team-list></gaf-team-list>
+    </div>
+  </ng-container>
+
+</div>
