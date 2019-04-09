@@ -31,7 +31,12 @@
           "options": {
             "main": "libs/angular-authentication-auth0/src/test.ts",
             "tsConfig": "libs/angular-authentication-auth0/tsconfig.spec.json",
-            "karmaConfig": "libs/angular-authentication-auth0/karma.conf.js"
+            "karmaConfig": "libs/angular-authentication-auth0/karma.conf.js",
+            "codeCoverageExclude": [
+              "src/lib/mock/gaf-auth0-mock.module.ts",
+              "src/lib/mock/gaf-auth0-mock.service.ts",
+              "src/lib/mock/gaf-storage-manager-mock.ts"
+            ]
           }
         }
       },
@@ -202,6 +207,24 @@
                   "with": "apps/angular-authentication-auth0-test/src/environments/environment.parentNestJs.ts"
                 }
               ]
+            },
+            "parentSingleNPM": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/angular-authentication-auth0-test/src/environments/environment.ts",
+                  "with": "apps/angular-authentication-auth0-test/src/environments/environment.parentSingle.ts"
+                }
+              ],
+              "tsConfig": "apps/angular-authentication-auth0-test/tsconfig.npm.app.json"
+            },
+            "childSingleNPM": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/angular-authentication-auth0-test/src/environments/environment.ts",
+                  "with": "apps/angular-authentication-auth0-test/src/environments/environment.childSingle.ts"
+                }
+              ],
+              "tsConfig": "apps/angular-authentication-auth0-test/tsconfig.npm.app.json"
             }
           }
         },
@@ -224,6 +247,12 @@
             },
             "childSingle": {
               "browserTarget": "angular-authentication-auth0-test:build:childSingle"
+            },
+            "parentSingleNPM": {
+              "browserTarget": "angular-authentication-auth0-test:build:parentSingleNPM"
+            },
+            "childSingleNPM": {
+              "browserTarget": "angular-authentication-auth0-test:build:childSingleNPM"
             },
             "parentNestJs": {
               "browserTarget": "angular-authentication-auth0-test:build:parentNestJs"
@@ -255,12 +284,7 @@
             "polyfills": "apps/angular-authentication-auth0-test/src/polyfills.ts",
             "styles": [],
             "scripts": [],
-            "assets": [],
-            "codeCoverageExclude": [
-              "src/lib/mock/gaf-auth0-mock.module.ts",
-              "src/lib/mock/gaf-auth0-mock.service.ts",
-              "src/lib/mock/gaf-storage-manager-mock.ts"
-            ]
+            "assets": []
           }
         }
       }

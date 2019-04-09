@@ -1,27 +1,17 @@
 {
-  "compileOnSave": false,
+  "extends": "./tsconfig-base.json",
   "compilerOptions": {
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es5",
-    "module": "es2015",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
     "paths": {
       "@gaf/angular-authentication-auth0": [
+        "dist/libs/angular-authentication-auth0",
         "libs/angular-authentication-auth0/src/index.ts"
       ],
       "@gaf/typescript-authentication-general": [
+        "dist/libs/typescript-authentication-general",
         "libs/typescript-authentication-general/src/index.ts"
       ],
       "@gaf/typescript-authentication-auth0": [
+        "dist/libs/typescript-authentication-auth0",
         "libs/typescript-authentication-auth0/src/index.ts"
       ]
     }
