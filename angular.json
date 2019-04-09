@@ -46,6 +46,49 @@
         }
       }
     },
+    "angular-authentication-auth0-npm": {
+      "root": "libs/angular-authentication-auth0",
+      "sourceRoot": "libs/angular-authentication-auth0/src",
+      "projectType": "library",
+      "prefix": "gaf",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/angular-authentication-auth0/tsconfig.lib.npm.json",
+            "project": "libs/angular-authentication-auth0/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/angular-authentication-auth0/tsconfig.lib.npm.json",
+              "libs/angular-authentication-auth0/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/angular-authentication-auth0/src/test.ts",
+            "tsConfig": "libs/angular-authentication-auth0/tsconfig.spec.json",
+            "karmaConfig": "libs/angular-authentication-auth0/karma.conf.js",
+            "codeCoverageExclude": [
+              "src/lib/mock/gaf-auth0-mock.module.ts",
+              "src/lib/mock/gaf-auth0-mock.service.ts",
+              "src/lib/mock/gaf-storage-manager-mock.ts"
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "typescript-authentication-general": {
       "root": "libs/typescript-authentication-general",
       "sourceRoot": "libs/typescript-authentication-general/src",
@@ -112,6 +155,44 @@
           "options": {
             "main": "libs/typescript-authentication-auth0/src/test.ts",
             "tsConfig": "libs/typescript-authentication-auth0/tsconfig.spec.json",
+            "karmaConfig": "libs/typescript-authentication-auth0/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "typescript-authentication-auth0-npm": {
+      "root": "libs/typescript-authentication-auth0",
+      "sourceRoot": "libs/typescript-authentication-auth0/src",
+      "projectType": "library",
+      "prefix": "gaf",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/typescript-authentication-auth0/tsconfig.lib.npm.json",
+            "project": "libs/typescript-authentication-auth0/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/typescript-authentication-auth0/tsconfig.lib.npm.json",
+              "libs/typescript-authentication-auth0/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/typescript-authentication-auth0/src/test.ts",
+            "tsConfig": "libs/typescript-authentication-auth0/tsconfig.spec.npm.json",
             "karmaConfig": "libs/typescript-authentication-auth0/karma.conf.js"
           }
         }
