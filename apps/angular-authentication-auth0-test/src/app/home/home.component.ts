@@ -26,6 +26,8 @@ export class HomeComponent implements OnInit {
 
     this.useNestInterface = config.useNestJs;
     this.authService.onAuthenticationChanged.subscribe(loggedIn => {
+      console.log(`Logged In: ${loggedIn}`);
+
       if (loggedIn) {
         this.refreshData();
       }

@@ -22,6 +22,12 @@
     },
     "angular-authentication-auth0-test-e2e": {
       "tags": []
+    },
+    "react-authentication-auth0-test": {
+      "tags": []
+    },
+    "react-authentication-auth0-test-e2e": {
+      "tags": []
     }
   }
 }

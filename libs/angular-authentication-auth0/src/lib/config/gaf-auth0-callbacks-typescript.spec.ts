@@ -17,24 +17,11 @@ describe('GafAuth0CallbacksTypescript', () => {
   });
 
   it('should call the failure function', () => {
-    let value = 0;
-    callbacks.HandleAuthenticationFailure = (injector: Injector) => {
-      value = 1;
-    }
-
-    callbacks.HandleAuthenticationSuccess = (injector: Injector) => {
-      value = 2;
-    }
-
     callbacks.GetScopesKeyFromUrl = (url: string): string => {
       return 'test';
     }
 
-    const result = CreateGafAuth0CallbacksTypescript(callbacks, TestBed.get(Injector));
-    result.HandleAuthenticationFailure();
-    expect(value).toBe(1);
-    result.HandleAuthenticationSuccess();
-    expect(value).toBe(2);
+    const result = CreateGafAuth0CallbacksTypescript(callbacks);
     expect(result.GetScopesKeyFromUrl('test')).toBe('test');
   });
 });

@@ -407,6 +407,120 @@
           }
         }
       }
+    },
+    "react-authentication-auth0-test": {
+      "root": "apps/react-authentication-auth0-test/",
+      "sourceRoot": "apps/react-authentication-auth0-test/src",
+      "projectType": "application",
+      "prefix": "gaf",
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@nrwl/builders:web-build",
+          "options": {
+            "outputPath": "dist/apps/react-authentication-auth0-test",
+            "index": "apps/react-authentication-auth0-test/src/index.html",
+            "main": "apps/react-authentication-auth0-test/src/main.tsx",
+            "polyfills": "apps/react-authentication-auth0-test/src/polyfills.ts",
+            "tsConfig": "apps/react-authentication-auth0-test/tsconfig.app.json",
+            "assets": [
+              "apps/react-authentication-auth0-test/src/favicon.ico",
+              "apps/react-authentication-auth0-test/src/assets"
+            ],
+            "styles": ["apps/react-authentication-auth0-test/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/react-authentication-auth0-test/src/environments/environment.ts",
+                  "with": "apps/react-authentication-auth0-test/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/builders:web-dev-server",
+          "options": {
+            "host": "local.gaf.com",
+            "port": 80,
+            "buildTarget": "react-authentication-auth0-test:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "react-authentication-auth0-test:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/react-authentication-auth0-test/tsconfig.app.json",
+              "apps/react-authentication-auth0-test/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/react-authentication-auth0-test/src/test.ts",
+            "tsConfig": "apps/react-authentication-auth0-test/tsconfig.spec.json",
+            "karmaConfig": "apps/react-authentication-auth0-test/karma.conf.js",
+            "polyfills": "apps/react-authentication-auth0-test/src/polyfills.ts",
+            "styles": [],
+            "scripts": [],
+            "assets": []
+          }
+        }
+      }
+    },
+    "react-authentication-auth0-test-e2e": {
+      "root": "apps/react-authentication-auth0-test-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/react-authentication-auth0-test-e2e/protractor.conf.js",
+            "devServerTarget": "react-authentication-auth0-test:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "react-authentication-auth0-test:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/react-authentication-auth0-test-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
     }
   },
   "cli": {

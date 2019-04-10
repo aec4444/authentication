@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.npm.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "allowJs": true,
+    "types": ["jasmine"]
+  },
+  "include": ["**/*.ts", "**/*.tsx"]
+}

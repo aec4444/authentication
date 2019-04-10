@@ -25,7 +25,7 @@ export class GafAuth0MobileService extends GafAuth0Browser implements IGafAuth0S
   ) {
     super(
       config,
-      CreateGafAuth0CallbacksTypescript(callbacksAngular, injector),
+      CreateGafAuth0CallbacksTypescript(callbacksAngular),
       tokenManager,
       storage
     );

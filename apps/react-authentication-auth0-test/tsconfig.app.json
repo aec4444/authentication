@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc/apps/react-authentication-auth0-test",
+    "types": []
+  },
+  "exclude": ["src/test.ts", "**/*.spec.ts"],
+  "include": ["**/*.ts"]
+}
