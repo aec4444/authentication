@@ -16,8 +16,8 @@ export const AUTH0_CONFIG: GafAuth0Settings = {
   domain: 'ssodev.gaf.com',
   accessTokenThreshold: 15000,
   audience: 'https://apigw.gaf.com/dev/api/v1/bi/salescenter/api/v1',
-  loginUri: 'https://customerinventorydev.gaf.com',
-  logoutUri: 'https://customerinventorydev.gaf.com',
+  loginUri: 'http://local.gaf.com',
+  logoutUri: 'http://local.gaf.com',
   redirectUri: 'http://local.gaf.com/callback',
 
   whitelistDomains: [
