@@ -1,12 +1,14 @@
 import { CustomerState } from './types';
 import { Reducer } from 'redux';
 import { CustomerActionTypes } from './actions';
+import { CUSTOMER_INVENTORY_SEARCH_CONFIG } from '../../environments/environment';
 
 export const initialState: CustomerState = {
   pageData: [],
   count: 0,
   page: 0,
-  loading: false
+  loading: false,
+  pageSize: CUSTOMER_INVENTORY_SEARCH_CONFIG.pageSize
 };
 
 // Reducer

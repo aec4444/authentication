@@ -4,7 +4,15 @@ import { all, call, fork, put, takeEvery, takeLatest, select } from 'redux-saga/
 import { fetchError, fetchSuccess, CustomerActionTypes } from './actions';
 import { ApplicationState } from '../store';
 
-let count = 0;
+// get email address
+const getEmail = (): string => {
+  if (CUSTOMER_INVENTORY_SEARCH_CONFIG.emulate !== undefined &&
+      CUSTOMER_INVENTORY_SEARCH_CONFIG.emulate !== null &&
+      CUSTOMER_INVENTORY_SEARCH_CONFIG.emulate !== '') {
+    return CUSTOMER_INVENTORY_SEARCH_CONFIG.emulate;
+  }
+  return GafAuth0Manager.storage.info.profile.email;
+}
 
 // return the URL needed
 const getUrl = (page: number, pageSize: number, search: string): string => {
@@ -21,15 +29,6 @@ const getUrl = (page: number, pageSize: number, search: string): string => {
   return url
 };
 
-const getEmail = (): string => {
-  if (CUSTOMER_INVENTORY_SEARCH_CONFIG.emulate !== undefined &&
-      CUSTOMER_INVENTORY_SEARCH_CONFIG.emulate !== null &&
-      CUSTOMER_INVENTORY_SEARCH_CONFIG.emulate !== '') {
-    return CUSTOMER_INVENTORY_SEARCH_CONFIG.emulate;
-  }
-  return GafAuth0Manager.storage.info.profile.email;
-}
-
 async function callApi(token: string, method: string, url: string, data?: any) {
   const res = await fetch(url, {
     method,
@@ -45,11 +44,14 @@ async function callApi(token: string, method: string, url: string, data?: any) {
 }
 
 const getPage = (state: ApplicationState) => state.customers.page;
+const getPageSize = (state: ApplicationState) => state.customers.pageSize;
 
 function* handleFetch() {
   try {
     const page = yield select(getPage);
-    const url = getUrl(page + 1, CUSTOMER_INVENTORY_SEARCH_CONFIG.pageSize, '');
+    const pageSize = yield select(getPageSize);
+
+    const url = getUrl(page + 1, pageSize, '');
 
     const token = yield call([GafAuth0Manager, GafAuth0Manager.getAccessToken], url);
     if (token.error) {

@@ -5,5 +5,6 @@ export interface CustomerState {
   count: number;
   page: number;
   loading: boolean;
-  error?: Error
+  error?: Error,
+  pageSize: number
 }

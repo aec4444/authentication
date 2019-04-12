@@ -22,13 +22,13 @@ export class CustomerInventoryContainer extends React.Component<CustomerInventor
   getNextPage = () => this.props.fetchNextPage();
 
   render() {
-    const { pageData, count } = this.props;
+    const { pageData, count, page, pageSize } = this.props;
     let markup: any;
 
     if (pageData) {
       markup = (
         <div>
-          <CustomerInventoryCount count={count}></CustomerInventoryCount>
+          <CustomerInventoryCount pageSize={pageSize} page={page} count={count}></CustomerInventoryCount>
 
           <button className="btn btn-primary" onClick={evt => this.getNextPage()}>Get Next Page</button>
 
@@ -47,7 +47,9 @@ export class CustomerInventoryContainer extends React.Component<CustomerInventor
 
 const mapStateToProps = (state, ownProps): CustomerInventoryContainerProps => ({
   pageData: state.customers.pageData,
-  count: state.customers.count
+  count: state.customers.count,
+  pageSize: state.customers.pageSize,
+  page: state.customers.page
 });
 
 const mapDispatchToProps = (dispatch): CustomerInventoryContainerProps => {

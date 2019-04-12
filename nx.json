@@ -28,6 +28,12 @@
     },
     "react-authentication-auth0-test-e2e": {
       "tags": []
+    },
+    "angular-authentication-auth0-npm": {
+      "tags": []
+    },
+    "typescript-authentication-auth0-npm": {
+      "tags": []
     }
   }
 }

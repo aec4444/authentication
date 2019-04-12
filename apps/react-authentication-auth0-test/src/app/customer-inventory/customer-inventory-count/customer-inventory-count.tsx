@@ -7,10 +7,14 @@ export class CustomerInventoryCount extends React.Component<CustomerInventoryCou
   }
 
   render() {
+    const { page, count, pageSize } = this.props;
+    const startNum = (page * pageSize + 1);
+    const endNum = Math.min(((page + 1) * pageSize), count);
+
     return (
       <React.Fragment>
         <p>
-          Querying Customer Inventory yielded {this.props.count} rows.
+          Page {page+1} - Surveys {startNum}-{endNum} of {count} rows.
         </p>
       </React.Fragment>
     );
