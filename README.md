@@ -1,41 +1,39 @@
-# Authentication
+# gaf-authentication
 
-This project was generated using [Nx](https://nx.dev).
+This repository creates interfaces, typescript based implementations and an Angular library to integrate with Auth0 for Authentication.
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="450"></p>
+Each library has its own README.md describing what it does.  Below is a high level description
 
-🔎 **Nx is a set of Angular CLI power-ups for modern development.**
+## Libraries
 
-## Quick Start & Documentation
+All libraries reside in the `libs` folder of this monorepo.
 
-[30-minute video showing all Nx features](https://nx.dev/getting-started/what-is-nx)
+### typescript-authentication-general
 
-[Interactive tutorial](https://nx.dev/tutorial/01-create-application)
+[README.md](libs/typescript-authentication-general/README.md)
 
-## Generate your first application
+This is a set of interfaces and base implementations to support authentication regardless of the provider.  
 
-Run `ng g app myapp` to generate an application. When using Nx, you can create multiple applications and libraries in the same CLI workspace.
+### typescript-authentication-auth0
 
-## Development server
+[README.md](libs/typescript-authentication-auth0/README.md)
 
-Run `ng serve myapp` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This is an implementation of Auth0 (<https://auth0.com/>) within Typescript.  By using generic typescript, the library is usable within any front end framework (Angular, React or others).
 
-## Code scaffolding
+### angular-authentication-auth0
 
-Run `ng generate component component-name --project=myapp` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+[README.md](libs/angular-authentication-auth0/README.md)
 
-## Build
+This is an Angular 7 implementation of Auth0.  It uses the typescript libraries created and bundles them in such a way to fit within the Angular ecosystem.
 
-Run `ng build myapp` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Test Applications
 
-## Running unit tests
+The example applications reside in the `apps` folder.
 
-Run `ng test` to execute the unit tests via [Jest](https://karma-runner.github.io).
+### angular-authentication-auth0-test
 
-## Running end-to-end tests
+This is a sample application to authenticate against Auth0 and call a REST API with an access token to acquire data.  Please note, the resources (Auth0 server and API) are private resources inside our network and cannot be called unless you are within GAF Network.
 
-Run `ng e2e` to execute the end-to-end tests via [Cypress](http://www.protractortest.org/).
+### react-authentication-auth0-test
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+This is the same example application created in React.
