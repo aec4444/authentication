@@ -39,7 +39,7 @@
     "@auth0/cordova": "^0.3.0",
     "@gaf/angular-authentication-auth0": "^7.1.3",
     "@gaf/typescript-authentication-auth0": "^1.1.2",
-    "@gaf/typescript-authentication-general": "^1.1.0",
+    "@gaf/typescript-authentication-general": "^1.1.2",
     "@gaf/typescript-jwt": "^1.0.1",
     "@gaf/typescript-simple-cache": "^1.0.1",
     "@nrwl/builders": "^7.8.0",
