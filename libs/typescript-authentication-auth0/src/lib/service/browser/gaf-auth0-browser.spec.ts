@@ -10,6 +10,7 @@ import { GafAuth0Callbacks } from '../../config/gaf-auth0-callbacks';
 import { WindowLocationMock } from '../../mocks/window-location-mock';
 import { GafStorageManagerMock } from '../../mocks/gaf-storage-manager-mock';
 import { IGafPromiseFunctions } from '../../models/IGafPromiseFunctions';
+import { domRendererFactory3 } from '@angular/core/src/render3/interfaces/renderer';
 
 const jwtToken =
   'eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJpc3MiOiJodHRwczovL2p3dC1pZHAuZXhhbXBsZS5jb20iLCJzdWIiOiJtYWlsdG86bWlrZUBleGFtcGxlLmNvbSIsIm5iZiI6MTU0OTA1NzA3MywiZXhwIjoxNTgwNTkzMDczLCJpYXQiOjE1NDkwNTcwNzMsImp0aSI6ImlkMTIzNDU2IiwidHlwIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9yZWdpc3RlciJ9.'; //tslint:disable-line
@@ -65,6 +66,7 @@ const runGetAccessToken = (service: GafAuth0Browser, done?: any, token?: string,
   const result = {
     accessToken: jwtToken,
     idToken: jwtToken,
+    refreshToken: jwtToken,
     idTokenPayload: {
       email: 'a@b.com',
     },
@@ -106,6 +108,31 @@ describe('GafAuth0BrowserService single audience tokens exist already', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('should renew id token because id token expired', (done: any) => {
+    service.config.idTokenThreshold = 50000000000; // big value to cause token to expire
+
+    const result = {
+      accessToken: jwtToken,
+      idToken: jwtToken,
+      idTokenPayload: {
+        email: 'a@b.com',
+      },
+    };
+
+    spyOn<any>(service['_auth0WebAuth'], 'checkSession').and.callFake(
+      (obj: any, fn: (err: any, result: any) => void) => {
+        done();
+        // fn(null, result);
+      },
+    );
+
+    const timeoutSpy = spyOn<any>(window, 'setTimeout').and.callFake((fn: () => void, timeout: number) => {
+      // do nothing.. no need to renew again
+    });
+
+    service.start();
   });
 
   it('should set single audience token into cache', () => {
@@ -182,14 +209,17 @@ describe('GafAuth0BrowserService single audience tokens exist already', () => {
 
   it('Get Access Token without audience', (done: any) => {
     service.start();
+    service.config.audience = undefined;
+    service.callbacks.onRenewError = (error: any) => {
+      done();
+    }
+
     const promise = service.getAccessToken('http://test.com');
 
-    service.config.audience = undefined;
-
-    promise.then(data => {
-      expect(data).toBeUndefined();
-      done();
-    });
+    // promise.then(data => {
+    //   expect(data).toBeUndefined();
+    //   done();
+    // });
   });
 
   it('should get email a@b.com', () => {
@@ -386,5 +416,15 @@ describe('GafAuth0BrowserService multiple audience existing tokens', () => {
     };
 
     runGetAccessToken(service);
+  });
+
+  it('Get Access Token - key found', (done: any) => {
+    tokenManager.set('found', jwtToken);
+    service.callbacks.GetScopesKeyFromUrl = (url: string) => 'found';
+    service.callbacks.onRenewError = (error: any) => {
+      done();
+    };
+
+    runGetAccessToken(service, done, jwtToken);
   });
 });

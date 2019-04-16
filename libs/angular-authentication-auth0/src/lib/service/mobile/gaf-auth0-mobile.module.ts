@@ -17,6 +17,7 @@ import { GafAuth0Service } from '../gaf-auth0-service';
 // typescript items
 import { GafAuth0Settings } from '@gaf/typescript-authentication-auth0';
 import { GafAuthenticationMode, GafStorageManager } from '@gaf/typescript-authentication-general';
+import { GafWindowLocationService } from '../window/gaf-window-location.service';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ export class GafAuth0MobileModule {
     return {
       ngModule: GafAuth0MobileModule,
       providers: [
+        GafWindowLocationService,
         { provide: GafAuth0Service, useClass: GafAuth0MobileService},
         GafTokenManagerService,
         { provide: GafStorageManager, useClass: GafAuth0MemoryStorageService},

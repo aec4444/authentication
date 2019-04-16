@@ -6,6 +6,7 @@ import { IGafAuth0Service } from '../IGafAuth0Service';
 import { GafTokenManagerService } from '../../token-manager/gaf-token-manager.service';
 import { GafStorageManager } from '@gaf/typescript-authentication-general';
 import { CreateGafAuth0CallbacksTypescript } from '../../config/gaf-auth0-callbacks-typescript';
+import { GafWindowLocationService } from '../window/gaf-window-location.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,13 +20,15 @@ export class GafAuth0BrowserService extends GafAuth0Browser implements IGafAuth0
     @Inject('GafAuth0Callbacks') public callbacksAngular: GafAuth0Callbacks,
     protected tokenManager: GafTokenManagerService,
     protected injector: Injector,
-    public storage: GafStorageManager
+    public storage: GafStorageManager,
+    protected windowLocation: GafWindowLocationService
   ) {
     super(
       config,
       CreateGafAuth0CallbacksTypescript(callbacksAngular),
       tokenManager,
-      storage
+      storage,
+      windowLocation
     );
 
     this.callbacks.onAuthenticationChanged = (success: boolean) => this.onAuthenticationChanged.emit(success);

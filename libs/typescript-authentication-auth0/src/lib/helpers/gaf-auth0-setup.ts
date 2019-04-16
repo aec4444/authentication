@@ -9,31 +9,41 @@ export class GafAuth0Setup {
     }
   }
 
-  public createWebAuth(config: GafAuth0Settings, isSingleAudience = true): auth0.WebAuth {
-    let scopes = 'openid profile email';
-    let responseType = 'token id_token';
+  public getScopesAndResponseType(config: GafAuth0Settings, isSingleAudience = true):
+    { scope: string, responseType: string} {
+
+    const result: {scope: string, responseType: string} = {
+      scope: 'openid profile email',
+      responseType: 'token id_token'
+    };
 
     if (config !== undefined && config.authorize !== undefined) {
       if (config.authorize.responseType !== undefined) {
-        responseType = config.authorize.responseType;
+        result.responseType = config.authorize.responseType;
       }
 
       if (isSingleAudience && config.authorize.scopes !== undefined) {
-        scopes = config.authorize.scopes;
+        result.scope = config.authorize.scopes;
       }
     }
 
     if (isSingleAudience && config !== undefined && config.scopes !== undefined && config.scopes !== null && config.scopes.length > 0) {
-      scopes = `${scopes} ${config.scopes.join(' ')}`;
+      result.scope = `${result.scope} ${config.scopes.join(' ')}`;
     }
+
+    return result;
+  }
+
+  public createWebAuth(config: GafAuth0Settings, isSingleAudience = true): auth0.WebAuth {
+    const result = this.getScopesAndResponseType(config, isSingleAudience);
 
     return new auth0.WebAuth({
       clientID: config === undefined ? '' : config.clientId || '',
       domain: config === undefined ? '' : config.domain || '',
       audience: config === undefined ? '' : config.audience || '',
       redirectUri: config === undefined ? '' : config.redirectUri || '',
-      responseType,
-      scope: scopes,
+      responseType: result.responseType,
+      scope: result.scope,
     });
   }
 

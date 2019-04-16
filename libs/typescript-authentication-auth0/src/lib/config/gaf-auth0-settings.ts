@@ -23,4 +23,9 @@ export interface GafAuth0Settings {
   redirectUri?: string;
   mode?: GafAuthenticationMode;
   whitelistDomains?: Array<string | RegExp>;
+  setupRefreshTimers?: boolean
+}
+
+export interface GafAuth0MobileSettings extends GafAuth0Settings {
+  packageIdentifier?: string;
 }

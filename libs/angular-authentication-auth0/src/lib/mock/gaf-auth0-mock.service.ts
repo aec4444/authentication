@@ -3,7 +3,7 @@
 import { Injectable, Inject, Injector, EventEmitter } from '@angular/core';
 
 // app imports
-import { GafAuth0Settings, GafAuth0 } from '@gaf/typescript-authentication-auth0';
+import { GafAuth0Settings, GafAuth0, WindowLocationMock } from '@gaf/typescript-authentication-auth0';
 import { GafTokenManagerService } from '../token-manager/gaf-token-manager.service';
 import { GafAuth0Callbacks } from '../config/gaf-auth0-callbacks';
 import { CreateGafAuth0CallbacksTypescript } from '../config/gaf-auth0-callbacks-typescript';
@@ -31,7 +31,8 @@ export class GafAuth0MockService extends GafAuth0 implements IGafAuth0Service {
       config,
       CreateGafAuth0CallbacksTypescript(callbacksAngular),
       tokenManager,
-      storage
+      storage,
+      new WindowLocationMock()
     );
 
     // add after super
@@ -58,6 +59,10 @@ export class GafAuth0MockService extends GafAuth0 implements IGafAuth0Service {
 
   public get isAuthenticated(): boolean {
       return this._loggedIn;
+  }
+
+  public renewIdToken() {
+    // do nothing
   }
 
   /**

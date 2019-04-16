@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
 import { GafAuth0Settings } from '@gaf/typescript-authentication-auth0';
 import { GafAuthenticationMode, GafStorageManager } from '@gaf/typescript-authentication-general';
 import { GafAuth0Service } from '../gaf-auth0-service';
+import { GafWindowLocationService } from '../window/gaf-window-location.service';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ export class GafAuth0BrowserModule {
     return {
       ngModule: GafAuth0BrowserModule,
       providers: [
+        GafWindowLocationService,
         { provide: GafAuth0Service, useClass: GafAuth0BrowserService},
         GafTokenManagerService,
         { provide: GafStorageManager, useClass: GafAuth0BrowserStorageService},
