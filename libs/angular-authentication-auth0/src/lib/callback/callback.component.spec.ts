@@ -25,10 +25,10 @@ const createModule = () => {
   };
 
   const callbacks: GafAuth0Callbacks = {
-    HandleAuthenticationFailure: (injector: Injector) => {
+    handleAuthenticationFailure: (injector: Injector) => {
       console.log('Handling Failure');
     },
-    HandleAuthenticationSuccess: (injector: Injector) => {
+    handleAuthenticationSuccess: (injector: Injector) => {
       console.log('Handling Success');
     }
   };

@@ -1,7 +1,7 @@
 import parse from 'url-parse';
 import auth0 from 'auth0-js';
 import getAgent from '@auth0/cordova/src/agent';
-import crypto from '@auth0/cordova/src/crypto';
+import * as crypto from './crypto';
 import session from '@auth0/cordova/src/session';
 import getOSRoot from '@auth0/cordova/src/utils';
 import { raw as version } from '@auth0/cordova/src/version';

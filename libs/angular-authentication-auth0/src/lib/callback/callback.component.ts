@@ -20,12 +20,12 @@ export class CallbackComponent implements OnInit {
     this.authService.handleAuthentication().then((success: boolean) => {
       if (this.configMethods !== null) {
         if (success) {
-          if (typeof this.configMethods.HandleAuthenticationSuccess === 'function') {
-            this.configMethods.HandleAuthenticationSuccess(this.injector);
+          if (typeof this.configMethods.handleAuthenticationSuccess === 'function') {
+            this.configMethods.handleAuthenticationSuccess(this.injector);
           }
         } else {
-          if (typeof this.configMethods.HandleAuthenticationFailure === 'function') {
-            this.configMethods.HandleAuthenticationFailure(this.injector);
+          if (typeof this.configMethods.handleAuthenticationFailure === 'function') {
+            this.configMethods.handleAuthenticationFailure(this.injector);
           }
         }
       }

@@ -98,7 +98,7 @@ export const AUTH0_CONFIG: GafAuth0Settings = {
 
 #### CallbackComponent
 
-When the module is configured for parent mode, it will drive the user to the hosted login page when login is requested.  Auth0 requires a callback to be configured that your application will handle.  This module has a CallbackComponent which can be used saving the developer time from having to implement this default implementation.  The CallbackComponent will receive the callback from Auth0 and will call HandleAuthenticationSuccess or HandleAuthenticationFailure from the Auth0 Callback Methods (see below about Auth0 Callback Methods).
+When the module is configured for parent mode, it will drive the user to the hosted login page when login is requested.  Auth0 requires a callback to be configured that your application will handle.  This module has a CallbackComponent which can be used saving the developer time from having to implement this default implementation.  The CallbackComponent will receive the callback from Auth0 and will call handleAuthenticationSuccess or handleAuthenticationFailure from the Auth0 Callback Methods (see below about Auth0 Callback Methods).
 
 ### Child Mode
 
@@ -182,15 +182,15 @@ The module supports 3 optional callbacks that can be used to act on specific act
 
 Below are the definitions:
 
-### HandleAuthenticationSuccess(injector: Injector): void
+### handleAuthenticationSuccess(injector: Injector): void
 
 This method will be called when login is successful.  This allows you to react to the successful login and perform actions (such as a redirect to the welcome page).
 
-### HandleAuthenticationFailure(injector: Injector): void;
+### handleAuthenticationFailure(injector: Injector): void;
 
 This method will be called when login is not successful.  It will allow you to redirect users to a not authorized page or any other action.
 
-### GetScopesKeyFromUrl?(url: string): string;
+### getScopesKeyFromUrl?(url: string): string;
 
 This method is used for those configurations that have multiple sets of scopes configured.  If there is only 1 set of scopes (a string array in the configuration), then this method is not necessary.  It gives your application to determine the Scopes Key based on the URL called.  The key returned will be used to get the access token from the cache, and if it doesn't exist, request the access token from auth0.
 
@@ -198,7 +198,7 @@ This method is used for those configurations that have multiple sets of scopes c
 
 ### CallbackComponent
 
-When the module is configured for parent mode, it will drive the user to the hosted login page when login is requested.  Auth0 requires a callback to be configured that your application will handle.  This module has a CallbackComponent which can be used saving the developer time from having to implement this default implementation.  The CallbackComponent will receive the callback from Auth0 and will call HandleAuthenticationSuccess or HandleAuthenticationFailure from the Auth0 Callback Methods (see above).
+When the module is configured for parent mode, it will drive the user to the hosted login page when login is requested.  Auth0 requires a callback to be configured that your application will handle.  This module has a CallbackComponent which can be used saving the developer time from having to implement this default implementation.  The CallbackComponent will receive the callback from Auth0 and will call handleAuthenticationSuccess or handleAuthenticationFailure from the Auth0 Callback Methods (see above).
 
 ## Child mode Considerations
 

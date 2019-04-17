@@ -1,5 +1,7 @@
 export interface GafAuth0Callbacks {
-  GetScopesKeyFromUrl?(url: string): string;
+  getScopesKeyFromUrl?(url: string): string;
   onAuthenticationChanged?(loggedIn: boolean): void;
   onRenewError?(error: any): void;
+  handleAuthenticationSuccess?(): void;
+  handleAuthenticationFailure?(): void;
 }

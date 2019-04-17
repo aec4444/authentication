@@ -17,11 +17,13 @@ describe('GafAuth0CallbacksTypescript', () => {
   });
 
   it('should call the failure function', () => {
-    callbacks.GetScopesKeyFromUrl = (url: string): string => {
+    const injector = <Injector>TestBed.get(Injector);
+
+    callbacks.getScopesKeyFromUrl = (url: string): string => {
       return 'test';
     }
 
-    const result = CreateGafAuth0CallbacksTypescript(callbacks);
-    expect(result.GetScopesKeyFromUrl('test')).toBe('test');
+    const result = CreateGafAuth0CallbacksTypescript(callbacks, injector);
+    expect(result.getScopesKeyFromUrl('test')).toBe('test');
   });
 });

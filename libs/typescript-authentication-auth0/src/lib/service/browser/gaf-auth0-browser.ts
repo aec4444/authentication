@@ -93,7 +93,7 @@ export class GafAuth0Browser extends GafAuth0 {
       // multiple audience
       return new Promise<string>((resolve, reject) => {
         this._initialRenewIdTokenPromise.then(() => {
-          const key = this.callbacks.GetScopesKeyFromUrl(url);
+          const key = this.callbacks.getScopesKeyFromUrl(url);
 
           if (key === undefined || key === null || key === '') {
             if (typeof this.callbacks.onRenewError === 'function') {

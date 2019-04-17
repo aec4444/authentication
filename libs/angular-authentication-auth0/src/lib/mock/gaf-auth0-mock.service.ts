@@ -29,7 +29,7 @@ export class GafAuth0MockService extends GafAuth0 implements IGafAuth0Service {
   ) {
     super(
       config,
-      CreateGafAuth0CallbacksTypescript(callbacksAngular),
+      CreateGafAuth0CallbacksTypescript(callbacksAngular, injector),
       tokenManager,
       storage,
       new WindowLocationMock()

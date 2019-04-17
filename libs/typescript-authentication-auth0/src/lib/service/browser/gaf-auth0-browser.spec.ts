@@ -384,7 +384,7 @@ describe('GafAuth0BrowserService multiple audience existing tokens', () => {
     });
     service.config.scopes = scopes;
 
-    service.callbacks.GetScopesKeyFromUrl = (url: string) => {
+    service.callbacks.getScopesKeyFromUrl = (url: string) => {
       return 'test1';
     };
   });
@@ -401,7 +401,7 @@ describe('GafAuth0BrowserService multiple audience existing tokens', () => {
   });
 
   it('Get Access Token - no key', (done: any) => {
-    service.callbacks.GetScopesKeyFromUrl = (url: string) => undefined;
+    service.callbacks.getScopesKeyFromUrl = (url: string) => undefined;
     service.callbacks.onRenewError = (error: any) => {
       done();
     };
@@ -410,7 +410,7 @@ describe('GafAuth0BrowserService multiple audience existing tokens', () => {
   });
 
   it('Get Access Token - key not found', (done: any) => {
-    service.callbacks.GetScopesKeyFromUrl = (url: string) => 'notfound';
+    service.callbacks.getScopesKeyFromUrl = (url: string) => 'notfound';
     service.callbacks.onRenewError = (error: any) => {
       done();
     };
@@ -420,7 +420,7 @@ describe('GafAuth0BrowserService multiple audience existing tokens', () => {
 
   it('Get Access Token - key found', (done: any) => {
     tokenManager.set('found', jwtToken);
-    service.callbacks.GetScopesKeyFromUrl = (url: string) => 'found';
+    service.callbacks.getScopesKeyFromUrl = (url: string) => 'found';
     service.callbacks.onRenewError = (error: any) => {
       done();
     };

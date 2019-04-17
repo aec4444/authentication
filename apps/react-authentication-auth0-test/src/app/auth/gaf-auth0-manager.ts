@@ -3,7 +3,7 @@ import { AUTH0_CONFIG } from '../../environments/environment';
 import { GafTokenManager, GafStorageManagerSession } from '@gaf/typescript-authentication-general';
 
 export const callbacks: GafAuth0Callbacks = {
-  GetScopesKeyFromUrl: (url: string) => 'audience'
+  getScopesKeyFromUrl: (url: string) => 'audience'
 }
 
 export const GafAuth0Manager = new GafAuth0Browser(

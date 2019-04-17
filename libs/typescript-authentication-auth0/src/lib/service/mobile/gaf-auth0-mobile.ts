@@ -11,7 +11,7 @@ import { GafAuth0MobileSettings } from '../../config/gaf-auth0-settings';
 import { GafAuth0Callbacks } from '../../config/gaf-auth0-callbacks';
 import { WindowLocation } from '../../helpers/window-location';
 import { GafAuth0 } from '../gaf-auth0.abstract';
-import { GafAuth0Cordova as Auth0Cordova } from './auth0Cordova_gaf';
+import { GafAuth0Cordova as Auth0Cordova } from './utilities/auth0Cordova_gaf';
 import { IGafPromiseFunctions } from '../../models/IGafPromiseFunctions';
 
 export class GafAuth0Mobile extends GafAuth0 {
@@ -72,7 +72,7 @@ export class GafAuth0Mobile extends GafAuth0 {
         throw err;
       }
 
-      auth0Library.client.userInfo(authResult.accessToken, (err2, user) => {
+      auth0.client.userInfo(authResult.accessToken, (err2, user) => {
         if (err2) {
           throw err2;
         }
@@ -82,7 +82,10 @@ export class GafAuth0Mobile extends GafAuth0 {
 
         this.setAuthSession(authResult);
 
-        // TODO: now that we are successful, we can call the success path
+        // call a successful login
+        if (typeof this.callbacks.handleAuthenticationSuccess === 'function') {
+          this.callbacks.handleAuthenticationSuccess();
+        }
       });
     });
   }

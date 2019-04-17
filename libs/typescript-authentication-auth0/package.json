@@ -1,6 +1,6 @@
 {
   "name": "@gaf/typescript-authentication-auth0",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "dependencies": {
     "@gaf/typescript-authentication-general": "^1.1.2",
     "@gaf/typescript-jwt": "^1.0.1",

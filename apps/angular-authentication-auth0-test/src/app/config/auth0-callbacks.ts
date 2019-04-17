@@ -7,7 +7,7 @@ import { CUSTOMER_INVENTORY_SEARCH_CONFIG,
 
 
 export class CustomAuth0CallbacksDefinition implements GafAuth0Callbacks {
-  GetScopesKeyFromUrl(url: string): string {
+  getScopesKeyFromUrl(url: string): string {
     // based on the url, determine the key
     url = url.toLowerCase();
 
@@ -22,13 +22,13 @@ export class CustomAuth0CallbacksDefinition implements GafAuth0Callbacks {
     return undefined;
   }
 
-  HandleAuthenticationSuccess?(injector: Injector): void {
+  handleAuthenticationSuccess?(injector: Injector): void {
     // get the router and send to the home page
     const router = injector.get<Router>(Router);
     router.navigateByUrl('');
   }
 
-  HandleAuthenticationFailure?(injector: Injector): void {
+  handleAuthenticationFailure?(injector: Injector): void {
     // injector.get<GafAuth0Servive>(); doesn't work with abstract class as injectiontoken.
     const auth = <GafAuth0Service>injector.get(GafAuth0Service);
     auth.login();
