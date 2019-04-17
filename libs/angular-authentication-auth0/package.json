@@ -7,6 +7,6 @@
   },
   "dependencies": {
     "@gaf/typescript-authentication-general": "^1.1.2",
-    "@gaf/typescript-authentication-auth0": "^1.1.4"
+    "@gaf/typescript-authentication-auth0": "^1.1.5"
   }
 }
