@@ -37,7 +37,7 @@
     "@angular/platform-browser-dynamic": "^7.0.0",
     "@angular/router": "^7.0.0",
     "@auth0/cordova": "^0.3.0",
-    "@gaf/angular-authentication-auth0": "^7.1.4",
+    "@gaf/angular-authentication-auth0": "^7.1.5",
     "@gaf/typescript-authentication-auth0": "^1.1.5",
     "@gaf/typescript-authentication-general": "^1.1.2",
     "@gaf/typescript-jwt": "^1.0.1",
